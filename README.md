@@ -7,20 +7,20 @@ I'm also very active on Hack The Box, check me out --> [BrunoHomemade @ HackTheB
 
 # [HTB Notes](https://github.com/BrunoCaseiro/OSWE-Practice/blob/main/HTB_Notes)https://github.com/BrunoCaseiro/OSWE-Practice/blob/main/HTB_Notes)
 
-#[Silky-CTF: 0x02]()
+# [Silky-CTF: 0x02]()
 
-#[bwapp]()
+# [bwapp]()
 
-#[Homeless 1]()
+# [Homeless 1]()
 
-#[Seattle 0.3]()
+# [Seattle 0.3]()
 
-#[Ted 1]()
+# [Ted 1]()
 
-#[Raven 2]()
+# [Raven 2]()
 
-#[Potato]()
+# [Potato]()
 
-#[Secure Code 1]()
+# [Secure Code 1]()
 
-#[Pipe]()
+# [Pipe]()
