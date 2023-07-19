@@ -7,10 +7,10 @@ Vault
   - You can bypass firewalls with the flag --source-port x in nmap. For example, if the firewall is blocking everything except DNS (port 53), try nmap ...... --source-port 53
 
 Popcorn
-  - a
+  - You can test for virtual hosts by intercepting requests and changing the Host header
 
 Celestial
-  - a
+  - Pretty straightforward. NodeJS deserialization in the cookie was pretty cool to see, but nothing extraordinary
 
 Blocky
   - a
