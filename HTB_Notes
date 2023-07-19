@@ -4,7 +4,7 @@ Vault
   - For a fully stable shell --> python -c 'import pty;pty.spawn("/bin/bash")' --> CTRL + Z --> ssty raw -echo --> fg --> export TERM=xterm
   - You can remote port forward in order to recieve a shell on your machine that is only available internally (send reverse shell to ssh user, which forwards the connection to your attacker machine)
     --> ssh -R 127.0.0.1:9001:127.0.0.1:9001
-  - 
+  - You can bypass firewalls with the flag --source-port x in nmap. For example, if the firewall is blocking everything except DNS (port 53), try nmap ...... --source-port 53
 
 Popcorn
   - a
