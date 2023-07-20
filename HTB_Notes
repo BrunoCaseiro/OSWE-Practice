@@ -10,13 +10,17 @@ Popcorn
   - You can test for virtual hosts by intercepting requests and changing the Host header
 
 Celestial
-  - Pretty straightforward. NodeJS deserialization in the cookie was pretty cool to see, but nothing extraordinary
+  - NodeJS deserialization in the cookie was pretty cool to see, but nothing extraordinary
 
 Blocky
-  - Nothing major. Remember to decompile .class and .jar files with JadX!
+  - Remember to decompile .class and .jar files with JadX!
 
 Falafel
-  - a
+  - Use --string "xxx" in sqlmap to use a string present in the response as a flag of successful injections
+  - Remember the PHP magic hash trick --> With PHP loose comparison, a hash starting with 0e will always evaluate to 0
+  - This means that any plaintext will work as a password as long as its hash starts with 0e (because the comparison will end up being 0 == 0)
+  - The filename had a char limit, which would truncate everything beyond it. Uploading aaaaaaaa.php.gif and forcing the truncation after .gif bypassed the file upload restrictions
+  - 
 
 Zipper
   - a
