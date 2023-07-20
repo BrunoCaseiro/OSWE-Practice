@@ -22,6 +22,7 @@ Falafel
   - The filename had a char limit, which would truncate everything beyond it. Uploading aaaaaaaa.php.gif and forcing the truncation after .gif bypassed the file upload restrictions
   - Super cool privesc --> https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe#video-group
   - Super cool privesc #2 --> https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe#disk-group
+  - Manually exploiting the SQLi with a python script is very similar to what's shown in the OSWE material!
 
 Zipper
   - a
