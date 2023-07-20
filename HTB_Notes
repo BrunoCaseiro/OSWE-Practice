@@ -25,7 +25,8 @@ Falafel
   - Manually exploiting the SQLi with a python script is very similar to what's shown in the OSWE material!
 
 Zipper
-  - a
+  - Add the prefix "nohup" to a command to make sure the process isn't tied to the original one
+  - This means that if you're shell is dying due to a timeout or something similar, nohup will solve that
 
 Unattended
   - a
