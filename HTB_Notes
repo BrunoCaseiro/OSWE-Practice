@@ -20,7 +20,8 @@ Falafel
   - Remember the PHP magic hash trick --> With PHP loose comparison, a hash starting with 0e will always evaluate to 0
   - This means that any plaintext will work as a password as long as its hash starts with 0e (because the comparison will end up being 0 == 0)
   - The filename had a char limit, which would truncate everything beyond it. Uploading aaaaaaaa.php.gif and forcing the truncation after .gif bypassed the file upload restrictions
-  - 
+  - Super cool privesc --> https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe#video-group
+  - Super cool privesc #2 --> https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe#disk-group
 
 Zipper
   - a
