@@ -29,7 +29,11 @@ Zipper
   - This means that if you're shell is dying due to a timeout or something similar, nohup will solve that
 
 Unattended
-  - a
+  - Don't forget to check certificate details when faced with HTTPs servers, it can be good for recon
+  - URLs aren't always the same as file paths. You can have alias. For example, location /dev { alias /var/www/dev; } and location / { alias /var/www/html; }
+  - Use --no-string "xxx" in sqlmap to use a string present in the response as a flag of failed injections
+  - This PHPSESSID injection along with LFI was pretty cool --> https://book.hacktricks.xyz/pentesting-web/file-inclusion#via-php-sessions
+  - 
 
 Help
   - a
