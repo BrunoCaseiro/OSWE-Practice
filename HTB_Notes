@@ -35,10 +35,12 @@ Unattended
   - This PHPSESSID injection along with LFI was pretty cool --> https://book.hacktricks.xyz/pentesting-web/file-inclusion#via-php-sessions
 
 Help
-  - a
+  - The initial exploit was tricky to fire since the time on the box was slightly off (also, timezones!)
+  - To fix this, get the date from the response. Run it in a loop in order to provide a ~1 minute buffer
+  - Another great box to practice crafting manual SQLi scripts in Python 
 
 Mango
-  - a  
+  - a 
 
 Schooled
   - a
