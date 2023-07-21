@@ -33,7 +33,6 @@ Unattended
   - URLs aren't always the same as file paths. You can have alias. For example, location /dev { alias /var/www/dev; } and location / { alias /var/www/html; }
   - Use --no-string "xxx" in sqlmap to use a string present in the response as a flag of failed injections
   - This PHPSESSID injection along with LFI was pretty cool --> https://book.hacktricks.xyz/pentesting-web/file-inclusion#via-php-sessions
-  - 
 
 Help
   - a
