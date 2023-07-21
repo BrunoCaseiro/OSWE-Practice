@@ -40,7 +40,9 @@ Help
   - Another great box to practice crafting manual SQLi scripts in Python 
 
 Mango
-  - a 
+  - If you have a parameter such as username=admin&password=passwordAttempt, a cool NoSQL injection trick is to change it to username[$ne]=admin&password[$ne]passwordAttempt
+  - Alternatively, the following also works! This examples checks if there's a username with 5 characters username[$regex]=^.{5}
+  - Another great Python script demonstration for NoSQL injecton exploitation
 
 Schooled
   - a
