@@ -1,4 +1,5 @@
 Notes from IppSec's walkthroughs of the HTB machines I don't have access to :(
+It's hard to practicing scripting by just watching, so I went through this quickly and took some general CTF notes on each box
 
 Vault
   - For a fully stable shell --> python -c 'import pty;pty.spawn("/bin/bash")' --> CTRL + Z --> ssty raw -echo --> fg [enter] [enter]--> export TERM=xterm
