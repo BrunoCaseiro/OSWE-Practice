@@ -54,7 +54,8 @@ Sink
   - Cool HTTP request smuggling, but this doesn't seem applicable to OSWE
 
 Monitors
-  - a
+  - LFI these files in a for loop ../../../../../proc/$i/cmdline to enumerate running processes
+  - LFI ../../../../../etc/apache2/sites-available/000-default.conf and you might find some other virtual hosts (apache only, obviously)
 
 Magic
   - a
