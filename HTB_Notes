@@ -51,7 +51,7 @@ Schooled
   - Mass assignment vulnerability --> When you can add/edit parameters which are not shown in the UI by tampering the request
 
 Sink
-  - a
+  - Cool HTTP request smuggling, but this doesn't seem applicable to OSWE
 
 Monitors
   - a
