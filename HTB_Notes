@@ -58,7 +58,8 @@ Monitors
   - LFI ../../../../../etc/apache2/sites-available/000-default.conf and you might find some other virtual hosts (apache only, obviously)
 
 Magic
-  - a
+  - Methodology to bypass file upload restrictions: 1) Change MIME type; 2) Play with file extension tricks; 3) Magic Bytes
+  - If your terminal is overwriting stuff (bad dimensions) change it with ssty rows y; ssty columns x; You can also check your host's dimensions with ssty -a
   
 Fulcrum
   - a
