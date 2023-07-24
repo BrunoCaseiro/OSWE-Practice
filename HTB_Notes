@@ -62,8 +62,8 @@ Magic
   - If your terminal is overwriting stuff (bad dimensions) change it with ssty rows y; ssty columns x; You can also check your host's dimensions with ssty -a
   
 Fulcrum
-  - a
-  
+  - Exploiting blind XEE can be tricky, so try doing out of band stuff to have some feedback
+
 Unobtainium
   - a
   
@@ -83,9 +83,6 @@ JSON
   - a
   
 Arkham
-  - a
-  
-Hackback
   - a
   
 Holiday
