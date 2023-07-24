@@ -59,13 +59,14 @@ Monitors
 
 Magic
   - Methodology to bypass file upload restrictions: 1) Change MIME type; 2) Play with file extension tricks; 3) Magic Bytes
-  - If your terminal is overwriting stuff (bad dimensions) change it with ssty rows y; ssty columns x; You can also check your host's dimensions with ssty -a
+  - If your terminal is overwriting stuff (bad dimensions) change it with ssty rows y; ssty cols x; You can also check your host's dimensions with ssty -a
   
 Fulcrum
   - Exploiting blind XEE can be tricky, so try doing out of band stuff to have some feedback
 
 Unobtainium
-  - a
+  - Neat little trick to proxy some specific traffic through burp! Change the hosts file to 127.0.0.1 unobtanium.htb, then add a listener at 31337 and a redirect from 127.0.0.1:31337 to machine_ip:31337
+  - Yes! A prototype pollution box! I absolutely loved this OSWE chapter, really fun to see it in action :D
   
 Crossfit
   - a
