@@ -72,7 +72,8 @@ Crossfit
   - You can use the Access-Control-Allow-Origin header to enumerate sudomains. Change the Origin header and check the response
   
 Crossfit2
-  - a
+  - Grepping for grep -oP '/api/[^"]*' inside javascript files found him some interesting endpoints
+  - Really awesome CORS bypass, but not applicable to the OSWE
   
 Stacked
   - a
