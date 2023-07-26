@@ -84,4 +84,5 @@ Fingerprint
   - a
   
 JSON
-  - a
+  - .NET deserialization but with ysoserial, no manual exploitation :(
+  - And dnSpy was used, great 
