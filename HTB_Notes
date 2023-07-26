@@ -74,9 +74,11 @@ Crossfit
 Crossfit2
   - Grepping for grep -oP '/api/[^"]*' inside javascript files found him some interesting endpoints
   - Really awesome CORS bypass, but not applicable to the OSWE
+  - The XSS script was pretty cool and I'm starting to get very comfortable with these scripts. It's like I already know what he's going to write
   
 Stacked
-  - a
+  - Another XSS script. I thought I wouldn't learn a lot by watching, but this is really helping out
+  - To save the response in a variable, the second parameter o req.open() must be set to false (async parameter)
   
 Fingerprint
   - a
