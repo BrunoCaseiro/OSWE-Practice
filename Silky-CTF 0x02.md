@@ -21,20 +21,16 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 7.05 seconds
 ````
 
-#
-
 ## Port 80
 #### Default Apache page
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/02bcf962-fc1e-4fe8-a57c-6513d694080b)
 
-#
 
 #### Gobuster
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/85e64934-4d15-45cc-af37-6955be9e981b)
 
-#
 
 #### /admin.php
 
@@ -51,13 +47,10 @@ Got command injection on 'username' GET parameter!
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/e70a95d4-3e27-4ac9-b3e0-240e611a996f)
 
-#
-
 #### Reverse Shell
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/d4eabb79-c6f5-48ef-bef4-6096ca226afd)
 
-#
 
 ## Privilege Escalation
 
