@@ -81,7 +81,7 @@ Stacked
   - To save the response in a variable, the second parameter o req.open() must be set to false (async parameter)
   
 Fingerprint
-  - a
+  - Cool manual exploitation of Java insecure deserialization
   
 JSON
   - .NET deserialization but with ysoserial, no manual exploitation :(
