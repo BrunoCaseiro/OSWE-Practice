@@ -23,7 +23,7 @@ Nmap done: 1 IP address (1 host up) scanned in 7.05 seconds
 
 #
 
-### Port 80
+## Port 80
 #### Default Apache page
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/02bcf962-fc1e-4fe8-a57c-6513d694080b)
@@ -59,7 +59,7 @@ Got command injection on 'username' GET parameter!
 
 #
 
-### Privilege Escalation
+## Privilege Escalation
 
 There is an interesting file with the SUID bit in our home folder. It appears to be simply catting /etc/shadow, but I'll try running it with Pspy in parallel
 
