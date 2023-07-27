@@ -95,6 +95,7 @@ Sending AAAA in the payload part outputs the following
 Well, it's hex to ascii. Just have to switch the bytes around...
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/fa1c1fb4-4c2c-48ff-903a-1aa5f403382a)
+
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/cbfd53fc-1cb5-49c7-8366-c95fa41ea2a6)
 
 And boom! This is on my system so that's why we got permission denied. Let's try it on the victim
