@@ -22,17 +22,17 @@ Nmap done: 1 IP address (1 host up) scanned in 7.05 seconds
 ````
 
 ## Port 80
-#### Default Apache page
+## Default Apache page
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/02bcf962-fc1e-4fe8-a57c-6513d694080b)
 
 
-#### Gobuster
+## Gobuster
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/85e64934-4d15-45cc-af37-6955be9e981b)
 
 
-#### /admin.php
+## /admin.php
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/84cd50c0-28ae-48e6-b7d6-aa97120e10af)
 
@@ -70,7 +70,7 @@ base64 cat_shadow -w0
 base64 -d b64Cat_shadow > cat_shadow
 ````
 
-### Testing the binary
+## Testing the binary
 
 I fired up ghidra but I got nothing especial. I then tried a super long password in order to cause a buffer overflow, and the output on the left finally changed to something, previously it was always 0x0
 
