@@ -3,7 +3,7 @@ Notes and writeups of [TJ Null's list of machines similar to the OSWE exam](http
 
 Writeups also include one click exploits for the web portion of each machine
 
-I'm also very active on Hack The Box, check me out --> [BrunoHomemade @ HackTheBox](https://app.hackthebox.com/profile/420159)
+I'm very active on Hack The Box, which has also been helping a lot with the preparation for the OSWE. Check me out --> [BrunoHomemade @ HackTheBox](https://app.hackthebox.com/profile/420159)
 
 -----------------
 
