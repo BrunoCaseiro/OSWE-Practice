@@ -147,6 +147,7 @@ Rooted! A bit CTFy, slightly frustrating, but still pretty cool
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/3b9838b9-812f-4dec-ac56-b78c90cf307a)
 
+___
 
 Hello! I'm back a few weeks later. Here's the one-click exploit
 
