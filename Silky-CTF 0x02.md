@@ -155,6 +155,9 @@ A few minutes later
 
 
 Really fun CTF! But I'm not sure how this relates to the OSWE.
+
+___
+
 Anyway a few weeks later, here's the scripting automating the web part, which is pretty simple. I also re-did the PE part with ghidra, that was definitely a better and easier approach.
 
 ````
